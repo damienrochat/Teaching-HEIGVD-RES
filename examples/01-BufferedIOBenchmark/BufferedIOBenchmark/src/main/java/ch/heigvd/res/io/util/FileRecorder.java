@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
 /**
- *
  * @author Damien Rochat
  */
 public class FileRecorder implements IRecorder {

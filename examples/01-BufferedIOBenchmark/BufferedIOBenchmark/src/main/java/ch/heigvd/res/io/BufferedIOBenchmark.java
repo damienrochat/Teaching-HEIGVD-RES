@@ -29,7 +29,7 @@ public class BufferedIOBenchmark {
 
 	static final Logger LOG = Logger.getLogger(BufferedIOBenchmark.class.getName());
 
-    static final String outputFile = "./out/results.csv";
+    static final String outputFile = "./results.csv";
     static IRecorder recorder;
 
 	/**
@@ -80,9 +80,10 @@ public class BufferedIOBenchmark {
 				LOG.log(Level.SEVERE, ex.getMessage(), ex);
 			}
 		}
-		LOG.log(Level.INFO, "  > Done in {0} ms.", Timer.takeTime());
 
-        recorder.record(new BenchmarkExperimentData("WRITE", ioStrategy.toString(), blockSize, numberOfBytesToWrite, Timer.takeTime()));
+        long time = Timer.takeTime();
+		LOG.log(Level.INFO, "  > Done in {0} ms.", time);
+        recorder.record(new BenchmarkExperimentData("WRITE", ioStrategy.toString(), blockSize, numberOfBytesToWrite, time));
     }
 	
 	/**
@@ -158,9 +159,10 @@ public class BufferedIOBenchmark {
 				LOG.log(Level.SEVERE, ex.getMessage(), ex);
 			}
 		}
-		LOG.log(Level.INFO, "  > Done in {0} ms.", Timer.takeTime());
 
-        recorder.record(new BenchmarkExperimentData("READ", ioStrategy.toString(), blockSize, bytesRead, Timer.takeTime()));
+        long time = Timer.takeTime();
+        LOG.log(Level.INFO, "  > Done in {0} ms.", time);
+        recorder.record(new BenchmarkExperimentData("READ", ioStrategy.toString(), blockSize, bytesRead, time));
 	}
 
 	/**

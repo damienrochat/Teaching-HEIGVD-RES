@@ -1,7 +1,6 @@
 package ch.heigvd.res.io.util;
 
 /**
- *
  * @author Damien Rochat
  */
 public interface IRecorder {
